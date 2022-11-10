@@ -42,7 +42,7 @@ public class ResCustomerDao {
 	
 	public void insert(ResCustomer customer) {
 		dbCon();
-		String sql = "insert into res_info values(  res_seq.nextval ,10,?,?,?,?,?)";
+		String sql = "insert into res_info values(  res_seq.nextval ,1000,?,?,?,?,?)";
 		PreparedStatement pst;
 		try {
 			pst = con.prepareStatement(sql);		 
