@@ -15,12 +15,17 @@
 <script>
 function abc(obj) {
 	let body = obj.parentElement;
+	
 	let select = body.querySelector("#persons");
 	let option = select.value;
+	
+	let input1 = body.querySelector("#price");
+	let price = input1.value;
+	
 	$.ajax({
 			type:"get",
 		 dataType:"json",
-		 data:{ option : option } ,
+		 data:{ option : option  ,  price : price} ,
 		 url:"/Team1_ex4/resperson.do",
 		 success: function( data, textStatus){
 			 console.log("ajax success");
@@ -33,6 +38,7 @@ function abc(obj) {
 	});
 	
 }
+
 </script>
 </head>
 <body>
@@ -118,7 +124,8 @@ function abc(obj) {
 	
 	<tr>
 		<th>총 상품금액</th>
-		<td>가격 : <%=price%> 원</td>
+		<td>가격 : <input type="text" id="price" value="1234"></td>
+		
 	</tr>
 	
 	<tr>	
