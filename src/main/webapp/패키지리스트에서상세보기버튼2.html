@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+ .detail{
+ display:none;
+ height: 300px;
+ background-color: aqua;
+ }
+
+</style>
+
+<script>
+        
+        function toggle(obj){  
+        	// 버튼에 해당하는  li 얻어오기
+            let li  = obj.parentElement;
+         
+        	//li영역을 기준으로   detail 영역,  패키지정보영역과, flag 영역 얻어오기
+            let infoDiv  =  li.querySelector("#info");            
+            let flagTag =   li.querySelector("#flag");
+            let detail =    li.querySelector(".detail");
+            
+            //각 패키지의 상세영역 flag값 얻어오기
+            let flag = flagTag.value;            
+            if( flag ==0){            	         	
+            	//package_list();   
+                detail.style.display="block";
+                infoDiv.innerHTML="패키지명: 행복한 패키지";
+                flagTag.value=1;
+            }else{      
+                detail.style.display="none";
+                flagTag.value=0;
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+<ul id="list">
+<li> 상품패키지   <button  onclick="toggle(this)">클릭</button>
+<div  class="detail">
+    <input id="flag" type="hidden" value="0">    
+    <div   id="info"></div>
+   상세내용
+</div> 
+</li> 
+
+
+
+<li>  상품패키지    <button  onclick="toggle(this)">클릭</button>
+<div class="detail" >
+    <input  id="flag" type="hidden" value="0">
+   상세내용
+   <div id="info"></div>
+</div>
+</li> 
+</ul>
+
+</body>
+</html>
