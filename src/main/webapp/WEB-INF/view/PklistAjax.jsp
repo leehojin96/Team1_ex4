@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%String path = request.getContextPath();%>
+<link rel="styLesheet" href="<%=path%>/css/pklist.css">
 
 <style>
 
@@ -23,7 +25,7 @@
  list-style: none;
  }
 </style>
-
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function package_list( obj){
@@ -37,7 +39,7 @@ $.ajax(
 			 type:"get",
 			 dataType:"json",
 			 data:{ no : no} ,
-			 url:"/package_list.do",	    
+			 url:"/Team1_ex4/package_list.do",	    
 			 success: function( data, textStatus){
 		        console.log( data);	  //콘솔에서 json 데이터 확인하기 			        
 		        let pk_name = data.pk_name;
@@ -97,9 +99,15 @@ function toggle(obj){
  <%
     String id = (String)session.getAttribute("id");
     %>
-<header>AcornTour</header>
-	
-	<nav>
+    
+<header class = "header">
+<div class = "h_wrap">
+<div class= "title">
+AcornTour
+</div>	
+
+<nav>
+<div  class="nav">
 <%if(id == null){ %>
 <a href="mainIndex">홈페이지</a>
 <a href="package_list">패키지 여행 목록</a>
@@ -112,20 +120,22 @@ function toggle(obj){
 <a href="tourMypage">마이페이지</a>
 <a href="logout">로그아웃</a>
 <%} %>
+</div>
 </nav>
-	
+</div>
+</header>	
 	<div>
-	<h2 id="id">고객님만을 위한 추천 패키지여행
-	<img src = "/images/img1"  alt=""/> 
-	</h2>	
+	<p id="id">고객님만을 위한 추천 패키지여행</p> 	
 	<section>
 	
 <h3>아시아/유럽/미주</h3>
 <div class="wrap"> 
 
 <ul id="list">
-<li><a href="package_detail?pk_num=Pj123"><img src=" "><p>[슈퍼세이브] 행복한 오사카여행<br> 12월 20일부터 12월 23일까지 [로칸1일숙박] 바쁜 당신을 위한 추천 상품// </p><p>여행기간 2박3일<br>★4.2</p></a>	
+<li><a href="package_detail?pk_num=Pj123"><p><img src="https://image.hanatour.com/usr/cms/resize/400_0/2019/07/04/10000/a895c128-729e-448b-a9f2-ba66e6ce3503.jpg" alt="오사카"></p>
+<p class="pk">[슈퍼세이브] 행복한 오사카여행<br> 12월 20일부터 12월 23일까지 [로칸1일숙박]일상의 바쁜 당신을 위한  힐링 추천 상품!<br>여행기간 2박3일<br>평점 ★4.2</p></a>
 <button onclick="toggle(this)">상품요약보기</button>
+	
 	<div  class="detail">
 	
 			<input id="flag" type="hidden" value="0">
@@ -141,12 +151,16 @@ function toggle(obj){
 		     일정	
 		     <input type="text"  id="schedule" ><br>	
 		  </div>
-
+ 
 	</div>
 </li> 
+</ul>
 
-<li><a href="package_detail?pk_num=PA987"><img src=" "><p>[마감임박!!] 로스앤젤레스 관광<br>12월 10일부터 12월 17일일까지 미주여행 고민중이라면! [슈퍼세이브] 가족단위 추천 상품// </p><p>여행기간 8일<br>★4.5</p></a>
+<ul>
+<li><a href="tourPackageInfo?pk_num=PA987"><p><img src="https://image.hanatour.com/usr/cms/resize/400_0/2019/01/24/10000/483f20ed-6f50-4f32-be96-06208321a7ff.jpg"></p>
+<p class="pk">[마감임박!!] 로스앤젤레스 관광<br>12월 10일부터 12월 17일일까지 미주여행 고민중이라면! [슈퍼세이브] 가족단위 추천 상품<br> 여행기간 8일<br>평점 ★4.5</p></a>
 <button  onclick="toggle(this)">상품요약보기</button>
+	
 	<div  class="detail">
 	
 		<input id="flag" type="hidden" value="0">
@@ -165,9 +179,13 @@ function toggle(obj){
 
 	</div>
 </li> 
+</ul>	
 
-<li><a href="package_detail?pk_num=PU456 "><img src=" "><p>[크리스마스 마켓투어포함] 영국 런던 깊이보기<br>12월 25일부터 12월 31일까지 크리스마스부터 연말분위기 유럽감성찬스!  [추천도1위] 크리스마스를 느끼고 싶은 당신을 위한 선택!// </p><p>여행기간 6박7일<br>★4.7</p></a>
-<button  onclick="toggle(this)">상품요약보기</button>
+<ul>
+<li><a href=" package_detail?pk_num=PU456 "><p ><img src="https://image.hanatour.com/usr/cms/resize/400_0/2020/10/19/10000/ce3f0165-c22f-4262-a922-130c079362d9.jpg" alt="런던"></p>
+<p class="pk">[크리스마스 마켓투어포함] 영국 런던 깊이보기<br>12월 25일부터 12월 31일까지 크리스마스부터 연말분위기 유럽감성찬스! <br>[추천도1위] 크리스마스를 느끼고 싶은 당신을 위한 선택!<br> 여행기간 6박7일<br>평점 ★4.7</p></a>
+<button  onclick="toggle(this)" >상품요약보기</button>
+    
     <div class="detail" >
 	
 		<input id="flag" type="hidden" value="0">
@@ -186,10 +204,15 @@ function toggle(obj){
 	
     </div>
     </li> 
+</ul>
 
-<li><a href=" "><img src=" "><p>[얼리버드 & 슈퍼세이브] 보라카이<br>10월 31일부터 11월 13일까지 즐기는 보라카이 특별 할인 찬스!  [슈퍼세이브] 알뜰한 해외여행을 준비하는 당신을 위한 선택! 가성비 추천 상품// </p><p>여행기간 4/5/6일<br>★4.2</p></a>
-<button  onclick="toggle(this)">상품요약보기</button>
-    <div class="detail" >
+<ul>
+<li><a href="package_detail?pk_num=PU123 "><p><img src="https://image.hanatour.com/usr/cms/resize/400_0/2017/02/27/10000/fab5bddb-1dbe-452f-8c9c-b213123b5d24.jpg" alt="보라카이"></p>	
+<p class="pk">[얼리버드 & 슈퍼세이브] 보라카이<br>10월 31일부터 11월 13일까지 즐기는 보라카이 특별 할인 찬스!  [슈퍼세이브] 알뜰한 해외여행을 준비하는 당신을 위한 선택! 가성비 추천 상품 !!<br>여행기간 4/5/6일<br>평점 ★4.2</p></a>
+<button  onclick="toggle(this)"id="btn_p" >상품요약보기</button>
+   
+	<div class="detail">
+	
        <input type="hidden" value="0">
 		   힐링+휴양 / 얼리버드
 		     <input type="text"  id="pk_name" ><br>
@@ -200,18 +223,59 @@ function toggle(obj){
 		     일정
 		     <input type="text"  id="schedule" ><br>		
 
-</ul>
-</div>
-				
+
+	</div>
+	</li>
+</ul>				
 	</section>
 	
 	<footer>
-		AcornTour Footer
-	</footer>
-
-
+<div class ="divFT">
+<div class ="divF">
+<ul>
+<li>회사소개</li>
+<li>이용약관</li>
+<li>개인정보처리방침</li>
+<li>여행자보험</li>
+<li>여행약관</li>
+<li>마켓팅제휴</li>
+<li>공식인증예액센터 검색</li>
+</ul>
+</div>
+<div class ="divF">
+<ul>
+<li>(주)하나투어</li>
+<li>대표:솜미선</li>
+<li>주소:(03161) 서울특별시 종로구 인사동</li>
+</ul>
 </div>
 
+<div class ="divF">
+<ul>
+<li>사업자등록</li>
+<li>사업자정보확인</li>
+<li>통신판매신고번호 종로02</li>
+<li>관광사업자 등록번호007</li>
+</ul>
+</div>
+
+<div class ="divF">
+<ul>
+<li>고객센터</li>
+<li>1577-1233</li>
+<li>해외항공권문의</li>
+<li>팩스02-734-0312<br></li>
+</ul>
+</div>
+</div>
+<p class="p_footer">
+※ 부득이한 사정에 의해 여행일정이 변경되는 경우 사전 동의를 받습니다.<br>
+※ 하나투어는 개별 항공권, 단품 및 일부 여행상품에 대하여 통신판매중개자로서 통신판매의 당사자가 아니며 해당상품의 거래정보 및 거래등에 대해 책임을 지지 않습니다.<br>
+COPYRIGHTⓒ HANATOUR SERVICE INC. ALL RIGHTS RESERVED
+</p>
+
+</footer>
+</div>
 
 </body>
 </html>

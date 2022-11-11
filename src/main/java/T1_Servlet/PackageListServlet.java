@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @WebServlet("/package_list")
 public class PackageListServlet extends HttpServlet{
@@ -17,6 +16,5 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	  
 	request.getRequestDispatcher("/WEB-INF/view/PklistAjax.jsp").forward(request, response);
 }
-  
   
 }

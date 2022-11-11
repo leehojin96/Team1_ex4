@@ -37,6 +37,8 @@ public class PayDao {
 		
 	}
 
+	
+	
 	public ArrayList<Pay> cus_paylist(String loginid){
 		
 		ArrayList<Pay> list = new ArrayList<>();
@@ -66,5 +68,24 @@ public class PayDao {
 				e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public void insert(Pay pay) {
+		dbCon();
+		String sql="insert into pay_info values(pay_seq.nextval,?,?,?,?)";
+		try {
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setString(1, pay.getId());
+			pst.setString(2, pay.getPk_num());
+			pst.setInt(3, pay.getPrice());
+			pst.setInt(4, pay.getPersons());
+			pst.executeUpdate();
+			
+			pst.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

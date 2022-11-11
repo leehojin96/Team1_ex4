@@ -29,26 +29,35 @@ public class ReservationServlet extends HttpServlet {
 		
 		System.out.println("가져와요2");
 		
-		//String pay_code = request.getParameter("pay_code");
-		String name = request.getParameter("name");
-		String eng_name = request.getParameter("eng_name");
-		int birth = Integer.parseInt(request.getParameter("birth"));
-		//String birth = request.getParameter("birth");
-		String phone = request.getParameter("phone");
-		String gender = request.getParameter("gender");
+		String[] names = request.getParameterValues("name");
+		String[] eng_names = request.getParameterValues("eng_name");
+		String[] births = request.getParameterValues("birth");
+		String[] phones = request.getParameterValues("phone");
+		String[] genders = request.getParameterValues("genders");
 		
-		System.out.println("제발아아앙");
-		
-		ResCustomerDao dao = new ResCustomerDao();
-		ResCustomer c = new ResCustomer("10", "임의로넣음",name,eng_name, birth, phone,gender);		
-		//CustomerDao dao = new CustomerDao();		
-		ResCustomerService service = new ResCustomerService(dao);		
-		service.insert(c);
+		/*
+		*/
+		for(int i=0; i < names.length ;i++) {
+			
+			String name = names[i];
+			String eng_name = eng_names[i];
+			String birth = births[i];
+			String phone = phones[i];
+			String gender = genders[i];
+			
+			ResCustomerDao dao = new ResCustomerDao();
+			ResCustomer rescustomer = new ResCustomer(name,eng_name, Integer.valueOf(birth), phone,gender);		
+			ResCustomerService service = new ResCustomerService(dao);		
+			service.insert(rescustomer);
+			
+			System.out.print(name);
+			System.out.print(eng_name);
+			System.out.print(birth);
+			System.out.print(phone);
+			System.out.print(gender);
+		}
 		
 		response.sendRedirect("tourMypage");
-		
-		//데이터 insert 후 보낼 페이지
-		//request.getRequestDispatcher("WEB-INF/view/res.jsp").forward(request, response);
 			
 	}
 	

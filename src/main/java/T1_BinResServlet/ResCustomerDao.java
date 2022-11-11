@@ -26,16 +26,7 @@ public class ResCustomerDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.print("연결성공");
 		
-		String sql = "select * from res_info";
-		PreparedStatement pst;
-		try {
-			pst = con.prepareStatement(sql);
-			ResultSet rs = pst.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 	}
 	
